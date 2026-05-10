@@ -1,0 +1,882 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carter PCs | About</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --red: #e8000d;
+        --red-dark: #a50009;
+        --red-glow: rgba(232, 0, 13, 0.35);
+        --bg: #0a0a0a;
+        --bg2: #111111;
+        --bg3: #181818;
+        --text: #f0f0f0;
+        --muted: #888;
+        --border: rgba(255, 255, 255, 0.07);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Barlow", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        overflow-x: hidden;
+      }
+
+      /* HEADER */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 48px;
+        height: 68px;
+        background: rgba(10, 10, 10, 0.92);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .logo {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 28px;
+        letter-spacing: 2px;
+        color: var(--red);
+        text-decoration: none;
+      }
+
+      nav {
+        display: flex;
+        gap: 36px;
+      }
+
+      nav a {
+        font-family: "Barlow", sans-serif;
+        font-weight: 600;
+        font-size: 13px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--muted);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      nav a:hover,
+      nav a.active {
+        color: #fff;
+      }
+
+      /* BANNER */
+      .banner {
+        margin-top: 68px;
+        position: relative;
+        height: 380px;
+        overflow: hidden;
+      }
+
+      .banner-bg {
+        position: absolute;
+        inset: 0;
+        background: url("https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1600&auto=format&fit=crop")
+          center/cover no-repeat;
+        filter: brightness(0.22) saturate(0.6);
+      }
+
+      .banner-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to right,
+          rgba(10, 10, 10, 0.9) 0%,
+          transparent 60%
+        );
+      }
+
+      .banner-content {
+        position: relative;
+        z-index: 2;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 64px;
+      }
+
+      .banner-tag {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--red);
+        margin-bottom: 16px;
+      }
+
+      .banner-content h1 {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: clamp(52px, 7vw, 90px);
+        letter-spacing: 3px;
+        line-height: 1;
+        margin-bottom: 18px;
+      }
+
+      .banner-content p {
+        font-size: 16px;
+        color: #999;
+        max-width: 440px;
+        line-height: 1.7;
+      }
+
+      /* CONTENT */
+      .content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 80px 48px;
+      }
+
+      /* BIO CARD */
+      .bio-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 44px;
+        margin-bottom: 60px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        align-items: center;
+      }
+
+      .bio-text p {
+        font-size: 16px;
+        line-height: 1.8;
+        color: #bbb;
+        margin-bottom: 14px;
+      }
+
+      .bio-text p strong {
+        color: #fff;
+      }
+
+      .bio-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2px;
+      }
+
+      .bio-stat {
+        background: var(--bg3);
+        padding: 24px;
+        text-align: center;
+      }
+
+      .bio-stat-num {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 38px;
+        color: var(--red);
+        letter-spacing: 2px;
+      }
+
+      .bio-stat-label {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-top: 4px;
+      }
+
+      /* SECTION HEADER */
+      .section-label {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--red);
+        margin-bottom: 10px;
+      }
+
+      .section-title {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: clamp(36px, 4vw, 52px);
+        letter-spacing: 2px;
+        margin-bottom: 32px;
+      }
+
+      /* SOCIALS GRID */
+      .socials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 12px;
+        margin-bottom: 70px;
+      }
+
+      .social-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-decoration: none;
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 28px;
+        transition:
+          border-color 0.25s,
+          transform 0.25s,
+          box-shadow 0.25s;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .social-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 3px;
+        height: 100%;
+        background: var(--red);
+        transform: scaleY(0);
+        transform-origin: bottom;
+        transition: transform 0.25s;
+      }
+
+      .social-card:hover {
+        border-color: rgba(232, 0, 13, 0.4);
+        transform: translateY(-3px);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+      }
+
+      .social-card:hover::before {
+        transform: scaleY(1);
+      }
+
+      .social-icon {
+        font-size: 28px;
+        margin-bottom: 16px;
+      }
+
+      .social-name {
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 22px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        color: #fff;
+        margin-bottom: 6px;
+      }
+
+      .social-handle {
+        font-size: 13px;
+        color: var(--muted);
+        margin-bottom: 20px;
+      }
+
+      .social-arrow {
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--red);
+      }
+
+      /* CONTACT */
+      .contact-box {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 32px;
+        flex-wrap: wrap;
+      }
+
+      .contact-box h3 {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 36px;
+        letter-spacing: 2px;
+        margin-bottom: 8px;
+      }
+
+      .contact-box p {
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      .btn-primary {
+        font-family: "Barlow", sans-serif;
+        font-weight: 700;
+        font-size: 13px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 14px 32px;
+        background: var(--red);
+        color: #fff;
+        border-radius: 3px;
+        flex-shrink: 0;
+        transition:
+          background 0.2s,
+          box-shadow 0.2s;
+      }
+      .btn-primary:hover {
+        background: var(--red-dark);
+        box-shadow: 0 0 24px var(--red-glow);
+      }
+
+      /* FOOTER */
+      footer {
+        background: var(--bg2);
+        border-top: 1px solid var(--border);
+        position: relative;
+        overflow: hidden;
+      }
+      .footer-glow {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 700px;
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          var(--red),
+          transparent
+        );
+      }
+      .footer-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 64px 48px 40px;
+      }
+      .footer-top {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr 1.6fr;
+        gap: 48px;
+        padding-bottom: 48px;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 32px;
+      }
+      .footer-brand .footer-logo {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 34px;
+        letter-spacing: 3px;
+        color: var(--red);
+        display: block;
+        margin-bottom: 12px;
+        text-decoration: none;
+      }
+      .footer-brand p {
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.8;
+        max-width: 210px;
+      }
+      .footer-col h4 {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 17px;
+        letter-spacing: 2px;
+        color: #fff;
+        margin-bottom: 18px;
+      }
+      .footer-col a {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--muted);
+        text-decoration: none;
+        margin-bottom: 11px;
+        transition:
+          color 0.2s,
+          padding-left 0.2s;
+      }
+      .footer-col a:hover {
+        color: #fff;
+        padding-left: 6px;
+      }
+      .footer-contact-box {
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 24px;
+        position: relative;
+        overflow: hidden;
+      }
+      .footer-contact-box::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 3px;
+        height: 100%;
+        background: var(--red);
+      }
+      .footer-contact-box h4 {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 17px;
+        letter-spacing: 2px;
+        color: #fff;
+        margin-bottom: 8px;
+      }
+      .footer-contact-note {
+        font-size: 12px;
+        color: var(--muted);
+        line-height: 1.7;
+        margin-bottom: 16px;
+      }
+      .footer-contact-note strong {
+        color: #bbb;
+      }
+      .footer-contact-links {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .footer-contact-links a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--muted);
+        text-decoration: none;
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 3px;
+        padding: 10px 14px;
+        transition:
+          border-color 0.2s,
+          color 0.2s,
+          background 0.2s;
+      }
+      .footer-contact-links a:hover {
+        border-color: rgba(232, 0, 13, 0.4);
+        color: #fff;
+        background: rgba(232, 0, 13, 0.05);
+      }
+      .footer-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .footer-copy {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.18);
+        letter-spacing: 1px;
+      }
+      .footer-tagline {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 13px;
+        letter-spacing: 3px;
+        color: rgba(255, 255, 255, 0.08);
+      }
+
+      /* ── HAMBURGER ── */
+      .nav-toggle {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        padding: 4px;
+        background: none;
+        border: none;
+      }
+
+      .nav-toggle span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: #fff;
+        border-radius: 2px;
+        transition:
+          transform 0.3s,
+          opacity 0.3s;
+      }
+
+      .nav-toggle.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .nav-toggle.open span:nth-child(2) {
+        opacity: 0;
+      }
+      .nav-toggle.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      .mobile-nav {
+        display: none;
+        position: fixed;
+        top: 68px;
+        left: 0;
+        right: 0;
+        background: rgba(10, 10, 10, 0.98);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--border);
+        z-index: 99;
+        flex-direction: column;
+        padding: 20px 24px;
+        gap: 4px;
+      }
+
+      .mobile-nav.open {
+        display: flex;
+      }
+
+      .mobile-nav a {
+        font-weight: 700;
+        font-size: 15px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--muted);
+        text-decoration: none;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--border);
+        transition: color 0.2s;
+      }
+
+      .mobile-nav a:last-child {
+        border-bottom: none;
+      }
+      .mobile-nav a:hover,
+      .mobile-nav a.active {
+        color: #fff;
+      }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 768px) {
+        header {
+          padding: 0 20px;
+        }
+        nav {
+          display: none;
+        }
+        .nav-toggle {
+          display: flex;
+        }
+
+        .banner {
+          height: 240px;
+        }
+        .banner-content {
+          padding: 0 24px;
+        }
+        .banner-content h1 {
+          font-size: 52px;
+        }
+        .banner-content p {
+          font-size: 14px;
+        }
+
+        .content {
+          padding: 40px 20px;
+        }
+
+        .bio-card {
+          grid-template-columns: 1fr;
+          padding: 28px 20px;
+          gap: 28px;
+        }
+
+        .bio-stats {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .socials-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 10px;
+        }
+
+        .contact-box {
+          flex-direction: column;
+          padding: 28px 20px;
+        }
+        .contact-box h3 {
+          font-size: 28px;
+        }
+
+        .footer-inner {
+          padding: 48px 20px 32px;
+        }
+        .footer-top {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+        .footer-bottom {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .socials-grid {
+          grid-template-columns: 1fr;
+        }
+        .bio-stats {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a class="logo" href="index.html">CarterPCs</a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="carter.html" class="active">About</a>
+        <a href="community.html">Community</a>
+      </nav>
+      <button
+        class="nav-toggle"
+        id="navToggle"
+        onclick="toggleNav()"
+        aria-label="Menu"
+      >
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <div class="mobile-nav" id="mobileNav">
+      <a href="index.html">Home</a>
+      <a href="carter.html" class="active">About</a>
+      <a href="community.html">Community</a>
+    </div>
+
+    <!-- BANNER -->
+    <div class="banner">
+      <div class="banner-bg"></div>
+      <div class="banner-overlay"></div>
+      <div class="banner-content">
+        <div class="banner-tag">Creator Profile</div>
+        <h1>About Carter</h1>
+        <p>
+          The guy behind the builds. Tech content, daily uploads, and setups
+          that actually go hard.
+        </p>
+      </div>
+    </div>
+
+    <div class="content">
+      <!-- BIO -->
+      <div class="bio-card">
+        <div class="bio-text">
+          <p>
+            <strong>Carter Ryan Smith</strong> (born August 8, 2005), known
+            online as <strong>CarterPCs</strong>, is an American tech creator
+            from California.
+          </p>
+          <p>
+            He started posting PC and tech content on TikTok in 2020 and grew to
+            millions of followers by uploading four videos every single day — no
+            days off. Ever.
+          </p>
+          <p>
+            Carter is known for tech reviews, setup tours, and making even
+            boring tech topics genuinely entertaining. In 2024 he won a sub race
+            against Nathan Espinoza, hitting
+            <strong>1 million YouTube subscribers</strong> first.
+          </p>
+        </div>
+        <div class="bio-stats">
+          <div class="bio-stat">
+            <div class="bio-stat-num">6.4M</div>
+            <div class="bio-stat-label">TikTok</div>
+          </div>
+          <div class="bio-stat">
+            <div class="bio-stat-num">1M+</div>
+            <div class="bio-stat-label">YouTube</div>
+          </div>
+          <div class="bio-stat">
+            <div class="bio-stat-num">788M</div>
+            <div class="bio-stat-label">Likes</div>
+          </div>
+          <div class="bio-stat">
+            <div class="bio-stat-num">4x</div>
+            <div class="bio-stat-label">Daily Posts</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SOCIALS -->
+      <div class="section-label">Find Carter</div>
+      <div class="section-title">Socials & Links</div>
+
+      <div class="socials-grid">
+        <a
+          class="social-card"
+          href="https://www.youtube.com/@actuallycarterpcs"
+          target="_blank"
+        >
+          <div>
+            <div class="social-icon">▶</div>
+            <div class="social-name">YouTube</div>
+            <div class="social-handle">@actuallycarterpcs</div>
+          </div>
+          <div class="social-arrow">Watch →</div>
+        </a>
+
+        <a
+          class="social-card"
+          href="https://www.tiktok.com/@carterpcs"
+          target="_blank"
+        >
+          <div>
+            <div class="social-icon">♪</div>
+            <div class="social-name">TikTok</div>
+            <div class="social-handle">@carterpcs</div>
+          </div>
+          <div class="social-arrow">Follow →</div>
+        </a>
+
+        <a
+          class="social-card"
+          href="https://www.tiktok.com/@carternotpcs"
+          target="_blank"
+        >
+          <div>
+            <div class="social-icon">♪</div>
+            <div class="social-name">TikTok (Backup)</div>
+            <div class="social-handle">@carternotpcs</div>
+          </div>
+          <div class="social-arrow">Follow →</div>
+        </a>
+
+        <a
+          class="social-card"
+          href="https://www.instagram.com/carterpcs"
+          target="_blank"
+        >
+          <div>
+            <div class="social-icon">◈</div>
+            <div class="social-name">Instagram</div>
+            <div class="social-handle">@carterpcs</div>
+          </div>
+          <div class="social-arrow">Follow →</div>
+        </a>
+
+        <a
+          class="social-card"
+          href="https://twitter.com/carterpcs"
+          target="_blank"
+        >
+          <div>
+            <div class="social-icon">✕</div>
+            <div class="social-name">X / Twitter</div>
+            <div class="social-handle">@carterpcs</div>
+          </div>
+          <div class="social-arrow">Follow →</div>
+        </a>
+
+        <a class="social-card" href="https://carterpcs.store" target="_blank">
+          <div>
+            <div class="social-icon">🛒</div>
+            <div class="social-name">Merch Store</div>
+            <div class="social-handle">carterpcs.store</div>
+          </div>
+          <div class="social-arrow">Shop →</div>
+        </a>
+      </div>
+
+      <!-- CONTACT -->
+      <div class="contact-box">
+        <div>
+          <h3>Business Inquiries</h3>
+          <p>Reach out for collaborations, brand deals, or media inquiries.</p>
+        </div>
+        <a href="mailto:carterpcs@rakugomedia.com" class="btn-primary"
+          >Email Carter</a
+        >
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-glow"></div>
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a class="footer-logo" href="index.html">CarterPCs</a>
+            <p>
+              The unofficial fan hub for Carter PCs — PC builds, giveaways, and
+              the community behind the content.
+            </p>
+          </div>
+          <div class="footer-col">
+            <h4>Navigate</h4>
+            <a href="index.html">Home</a>
+            <a href="carter.html">About Carter</a>
+            <a href="community.html">Community</a>
+          </div>
+          <div class="footer-col">
+            <h4>Carter's Socials</h4>
+            <a href="https://www.youtube.com/@actuallycarterpcs" target="_blank"
+              >▶ YouTube</a
+            >
+            <a href="https://www.tiktok.com/@carterpcs" target="_blank"
+              >♪ TikTok</a
+            >
+            <a href="https://www.instagram.com/carterpcs" target="_blank"
+              >◈ Instagram</a
+            >
+            <a href="https://twitter.com/carterpcs" target="_blank"
+              >✕ Twitter / X</a
+            >
+            <a href="https://carterpcs.store" target="_blank">🛒 Merch Store</a>
+          </div>
+          <div class="footer-contact-box">
+            <h4>Site Help & Admin</h4>
+            <p class="footer-contact-note">
+              Need help using the site, want admin access, or found a bug?<br /><strong
+                >Contact the site owner</strong
+              >
+            </p>
+            <div class="footer-contact-links">
+              <a href="https://www.instagram.com/j0kh4a" target="_blank"
+                ><span>◈</span> Instagram: @j0kh4a</a
+              >
+              <a href="mailto:zjokhadze96@gmail.com"
+                ><span>✉</span> zjokhadze96@gmail.com</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="footer-copy">
+            Carter PCs Fan Website © 2026 — Not affiliated with Carter Ryan
+            Smith
+          </div>
+          <div class="footer-tagline">Making Tech Less Of A Snooze Fest</div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function toggleNav() {
+        document.getElementById("navToggle").classList.toggle("open");
+        document.getElementById("mobileNav").classList.toggle("open");
+      }
+    </script>
+  </body>
+</html>

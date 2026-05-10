@@ -1,0 +1,1418 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carter PCs | Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --red: #e8000d;
+        --red-dark: #a50009;
+        --red-glow: rgba(232, 0, 13, 0.35);
+        --bg: #0a0a0a;
+        --bg2: #111111;
+        --bg3: #181818;
+        --text: #f0f0f0;
+        --muted: #888;
+        --border: rgba(255, 255, 255, 0.07);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Barlow", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        overflow-x: hidden;
+      }
+
+      /* ── HEADER ── */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 48px;
+        height: 68px;
+        background: rgba(10, 10, 10, 0.92);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .logo {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 28px;
+        letter-spacing: 2px;
+        color: var(--red);
+        text-decoration: none;
+      }
+
+      nav {
+        display: flex;
+        gap: 36px;
+      }
+
+      nav a {
+        font-family: "Barlow", sans-serif;
+        font-weight: 600;
+        font-size: 13px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--muted);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      nav a:hover,
+      nav a.active {
+        color: #fff;
+      }
+
+      /* ── HERO ── */
+      .hero {
+        position: relative;
+        height: 100vh;
+        min-height: 600px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        overflow: hidden;
+      }
+
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        background: url("https://images.unsplash.com/photo-1587202372775-e229f172b9d7?q=80&w=1600&auto=format&fit=crop")
+          center/cover no-repeat;
+        filter: brightness(0.28) saturate(0.7);
+        transform: scale(1.04);
+        animation: heroZoom 18s ease-in-out infinite alternate;
+      }
+
+      @keyframes heroZoom {
+        from {
+          transform: scale(1.04);
+        }
+        to {
+          transform: scale(1.12);
+        }
+      }
+
+      .hero-scanlines {
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+          to bottom,
+          transparent 0px,
+          transparent 3px,
+          rgba(0, 0, 0, 0.07) 3px,
+          rgba(0, 0, 0, 0.07) 4px
+        );
+        pointer-events: none;
+      }
+
+      .hero-glow {
+        position: absolute;
+        bottom: -80px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 600px;
+        height: 300px;
+        background: radial-gradient(
+          ellipse,
+          var(--red-glow) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        animation: fadeUp 1s ease both;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero-tag {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--red);
+        border: 1px solid var(--red);
+        padding: 5px 14px;
+        border-radius: 2px;
+        margin-bottom: 28px;
+      }
+
+      .hero h1 {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: clamp(70px, 10vw, 130px);
+        line-height: 0.9;
+        letter-spacing: 4px;
+        color: #fff;
+        text-shadow: 0 0 60px rgba(232, 0, 13, 0.4);
+        margin-bottom: 24px;
+      }
+
+      .hero h1 span {
+        color: var(--red);
+      }
+
+      .hero p {
+        font-size: 18px;
+        font-weight: 500;
+        color: #aaa;
+        max-width: 480px;
+        margin: 0 auto 40px;
+        line-height: 1.6;
+      }
+
+      .hero-btns {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .btn-primary {
+        font-family: "Barlow", sans-serif;
+        font-weight: 700;
+        font-size: 13px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 14px 32px;
+        background: var(--red);
+        color: #fff;
+        border-radius: 3px;
+        transition:
+          background 0.2s,
+          box-shadow 0.2s;
+      }
+      .btn-primary:hover {
+        background: var(--red-dark);
+        box-shadow: 0 0 24px var(--red-glow);
+      }
+
+      .btn-secondary {
+        font-family: "Barlow", sans-serif;
+        font-weight: 700;
+        font-size: 13px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 14px 32px;
+        background: transparent;
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 3px;
+        transition:
+          border-color 0.2s,
+          background 0.2s;
+      }
+      .btn-secondary:hover {
+        border-color: #fff;
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .scroll-hint {
+        position: absolute;
+        bottom: 36px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        z-index: 2;
+        animation: bounce 2s ease-in-out infinite;
+      }
+
+      .scroll-hint .arrow {
+        width: 1px;
+        height: 36px;
+        background: linear-gradient(to bottom, transparent, var(--red));
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+        50% {
+          transform: translateX(-50%) translateY(8px);
+        }
+      }
+
+      /* ── STATS BAR ── */
+      .stats-bar {
+        background: var(--bg2);
+        border-bottom: 1px solid var(--border);
+        border-top: 1px solid var(--border);
+        display: flex;
+        justify-content: center;
+        gap: 0;
+        overflow-x: auto;
+      }
+
+      .stat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 28px 48px;
+        border-right: 1px solid var(--border);
+        flex-shrink: 0;
+      }
+      .stat:last-child {
+        border-right: none;
+      }
+
+      .stat-num {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 36px;
+        color: var(--red);
+        letter-spacing: 2px;
+      }
+
+      .stat-label {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-top: 4px;
+      }
+
+      /* ── SECTIONS ── */
+      section.main {
+        padding: 100px 48px;
+        max-width: 1300px;
+        margin: 0 auto;
+      }
+
+      .section-label {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--red);
+        margin-bottom: 12px;
+      }
+
+      .section-title {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: clamp(38px, 5vw, 62px);
+        letter-spacing: 2px;
+        line-height: 1;
+        margin-bottom: 52px;
+      }
+
+      /* ── GIVEAWAY GRID ── */
+      .giveaway-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 14px;
+      }
+
+      .giveaway-card {
+        display: block;
+        text-decoration: none;
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        overflow: hidden;
+        position: relative;
+        transition:
+          transform 0.25s,
+          border-color 0.25s,
+          box-shadow 0.25s;
+      }
+
+      .giveaway-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(232, 0, 13, 0.45);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+      }
+
+      .giveaway-thumb {
+        position: relative;
+        aspect-ratio: 16/9;
+        overflow: hidden;
+      }
+
+      .giveaway-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.75) saturate(0.8);
+        transition:
+          filter 0.4s,
+          transform 0.4s;
+      }
+
+      .giveaway-card:hover .giveaway-thumb img {
+        filter: brightness(0.6) saturate(1.1);
+        transform: scale(1.05);
+      }
+
+      .giveaway-play {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .giveaway-play-btn {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        background: var(--red);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        opacity: 0;
+        transform: scale(0.8);
+        transition:
+          opacity 0.25s,
+          transform 0.25s;
+        box-shadow: 0 0 20px var(--red-glow);
+      }
+
+      .giveaway-card:hover .giveaway-play-btn {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .giveaway-badge {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: var(--red);
+        color: #fff;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 4px 10px;
+        border-radius: 2px;
+      }
+
+      .giveaway-info {
+        padding: 18px 20px 20px;
+      }
+
+      .giveaway-prize {
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 20px;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+        color: #fff;
+        margin-bottom: 5px;
+        line-height: 1.2;
+      }
+
+      .giveaway-desc {
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.5;
+        margin-bottom: 14px;
+      }
+
+      .giveaway-watch {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--red);
+      }
+
+      .upgrade-badge {
+        background: #ff6a00 !important;
+      }
+
+      .upgrade-before {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: #ff6a00;
+        margin-bottom: 6px;
+      }
+
+      .upgrade-card {
+        border-color: rgba(255, 106, 0, 0.12);
+      }
+
+      .upgrade-card:hover {
+        border-color: rgba(255, 106, 0, 0.5) !important;
+        box-shadow: 0 16px 40px rgba(255, 106, 0, 0.15) !important;
+      }
+
+      /* ── ABOUT STRIP ── */
+      .about-strip {
+        background: var(--bg2);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        padding: 80px 48px;
+        display: flex;
+        align-items: center;
+        gap: 80px;
+        max-width: 100%;
+      }
+
+      .about-text {
+        max-width: 600px;
+      }
+
+      .about-text p {
+        font-size: 17px;
+        line-height: 1.8;
+        color: #bbb;
+        margin-bottom: 16px;
+      }
+
+      .about-text p strong {
+        color: #fff;
+      }
+
+      .about-divider {
+        width: 1px;
+        height: 160px;
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          var(--red),
+          transparent
+        );
+        flex-shrink: 0;
+      }
+
+      .about-quote {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 44px;
+        line-height: 1.1;
+        letter-spacing: 2px;
+        color: #fff;
+        max-width: 360px;
+      }
+
+      .about-quote span {
+        color: var(--red);
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        background: var(--bg2);
+        border-top: 1px solid var(--border);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .footer-glow {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 700px;
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          var(--red),
+          transparent
+        );
+      }
+
+      .footer-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 64px 48px 40px;
+      }
+
+      .footer-top {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr 1.6fr;
+        gap: 48px;
+        padding-bottom: 48px;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 32px;
+      }
+
+      .footer-brand .footer-logo {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 34px;
+        letter-spacing: 3px;
+        color: var(--red);
+        display: block;
+        margin-bottom: 12px;
+        text-decoration: none;
+      }
+
+      .footer-brand p {
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.8;
+        max-width: 210px;
+      }
+
+      .footer-col h4 {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 17px;
+        letter-spacing: 2px;
+        color: #fff;
+        margin-bottom: 18px;
+      }
+
+      .footer-col a {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--muted);
+        text-decoration: none;
+        margin-bottom: 11px;
+        transition:
+          color 0.2s,
+          padding-left 0.2s;
+      }
+
+      .footer-col a:hover {
+        color: #fff;
+        padding-left: 6px;
+      }
+
+      .footer-contact-box {
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 24px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .footer-contact-box::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 3px;
+        height: 100%;
+        background: var(--red);
+      }
+
+      .footer-contact-box h4 {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 17px;
+        letter-spacing: 2px;
+        color: #fff;
+        margin-bottom: 8px;
+      }
+
+      .footer-contact-note {
+        font-size: 12px;
+        color: var(--muted);
+        line-height: 1.7;
+        margin-bottom: 16px;
+      }
+
+      .footer-contact-note strong {
+        color: #bbb;
+      }
+
+      .footer-contact-links {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .footer-contact-links a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--muted);
+        text-decoration: none;
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 3px;
+        padding: 10px 14px;
+        transition:
+          border-color 0.2s,
+          color 0.2s,
+          background 0.2s;
+      }
+
+      .footer-contact-links a:hover {
+        border-color: rgba(232, 0, 13, 0.4);
+        color: #fff;
+        background: rgba(232, 0, 13, 0.05);
+      }
+
+      .footer-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .footer-copy {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.18);
+        letter-spacing: 1px;
+      }
+
+      .footer-tagline {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 13px;
+        letter-spacing: 3px;
+        color: rgba(255, 255, 255, 0.08);
+      }
+
+      /* ── HAMBURGER ── */
+      .nav-toggle {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        padding: 4px;
+        background: none;
+        border: none;
+      }
+
+      .nav-toggle span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: #fff;
+        border-radius: 2px;
+        transition:
+          transform 0.3s,
+          opacity 0.3s;
+      }
+
+      .nav-toggle.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .nav-toggle.open span:nth-child(2) {
+        opacity: 0;
+      }
+      .nav-toggle.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      .mobile-nav {
+        display: none;
+        position: fixed;
+        top: 68px;
+        left: 0;
+        right: 0;
+        background: rgba(10, 10, 10, 0.98);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--border);
+        z-index: 99;
+        flex-direction: column;
+        padding: 20px 24px;
+        gap: 4px;
+      }
+
+      .mobile-nav.open {
+        display: flex;
+      }
+
+      .mobile-nav a {
+        font-weight: 700;
+        font-size: 15px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--muted);
+        text-decoration: none;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--border);
+        transition: color 0.2s;
+      }
+
+      .mobile-nav a:last-child {
+        border-bottom: none;
+      }
+      .mobile-nav a:hover,
+      .mobile-nav a.active {
+        color: #fff;
+      }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 1024px) {
+        .footer-top {
+          grid-template-columns: 1fr 1fr;
+          gap: 32px;
+        }
+      }
+
+      @media (max-width: 900px) {
+        .giveaway-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        header {
+          padding: 0 20px;
+        }
+        nav {
+          display: none;
+        }
+        .nav-toggle {
+          display: flex;
+        }
+
+        .hero h1 {
+          font-size: 72px;
+        }
+        .hero p {
+          font-size: 15px;
+          padding: 0 16px;
+        }
+        .hero-btns {
+          flex-direction: column;
+          align-items: center;
+          gap: 12px;
+        }
+        .btn-primary,
+        .btn-secondary {
+          width: 100%;
+          max-width: 280px;
+          text-align: center;
+        }
+
+        .stats-bar {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .stat {
+          padding: 18px 24px;
+          border-right: none;
+          border-bottom: 1px solid var(--border);
+          width: 50%;
+        }
+        .stat:nth-child(odd) {
+          border-right: 1px solid var(--border);
+        }
+
+        section.main {
+          padding: 60px 20px;
+        }
+        .section-title {
+          font-size: 40px;
+          margin-bottom: 32px;
+        }
+
+        .giveaway-grid {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+
+        .about-strip {
+          flex-direction: column;
+          padding: 52px 20px;
+          gap: 36px;
+          text-align: center;
+        }
+        .about-divider {
+          display: none;
+        }
+        .about-quote {
+          font-size: 34px;
+        }
+        .about-text p {
+          font-size: 15px;
+        }
+
+        .footer-inner {
+          padding: 48px 20px 32px;
+        }
+        .footer-top {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+        .footer-bottom {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero h1 {
+          font-size: 56px;
+        }
+        .stat {
+          width: 100%;
+          border-right: none;
+        }
+        .stat:nth-child(odd) {
+          border-right: none;
+        }
+        .giveaway-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a class="logo" href="index.html">CarterPCs</a>
+      <nav>
+        <a href="index.html" class="active">Home</a>
+        <a href="carter.html">About</a>
+        <a href="community.html">Community</a>
+      </nav>
+      <button
+        class="nav-toggle"
+        id="navToggle"
+        onclick="toggleNav()"
+        aria-label="Menu"
+      >
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <div class="mobile-nav" id="mobileNav">
+      <a href="index.html" class="active">Home</a>
+      <a href="carter.html">About</a>
+      <a href="community.html">Community</a>
+    </div>
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-scanlines"></div>
+      <div class="hero-glow"></div>
+      <div class="hero-content">
+        <div class="hero-tag">Making tech less of a snooze fest</div>
+        <h1>Carter<span>PCs</span></h1>
+        <p>
+          PC builds, setups, tech reviews — posted 4x a day. Welcome to the fan
+          hub.
+        </p>
+        <div class="hero-btns">
+          <a
+            href="https://www.youtube.com/@actuallycarterpcs"
+            target="_blank"
+            class="btn-primary"
+            >Watch on YouTube</a
+          >
+          <a href="community.html" class="btn-secondary">Community Posts</a>
+        </div>
+      </div>
+      <div class="scroll-hint">
+        <span>Scroll</span>
+        <div class="arrow"></div>
+      </div>
+    </div>
+
+    <!-- STATS BAR -->
+    <div class="stats-bar">
+      <div class="stat">
+        <div class="stat-num">6.4M+</div>
+        <div class="stat-label">TikTok Followers</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">1M+</div>
+        <div class="stat-label">YouTube Subscribers</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4x</div>
+        <div class="stat-label">Videos Per Day</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">788M+</div>
+        <div class="stat-label">Total Likes</div>
+      </div>
+    </div>
+
+    <!-- GIVEAWAYS -->
+    <section class="main">
+      <div class="section-label">Carter PCs</div>
+      <div class="section-title">Popular Giveaways</div>
+      <div class="giveaway-grid">
+        <!-- 1 -->
+        <a
+          class="giveaway-card"
+          href="https://www.youtube.com/shorts/2xKHXYEi-Yc"
+          target="_blank"
+        >
+          <div class="giveaway-thumb">
+            <img
+              src="https://images.unsplash.com/photo-1585298723682-7115561c51b7?q=80&w=800&auto=format&fit=crop"
+              alt="AirPods Max"
+            />
+            <div class="giveaway-play">
+              <div class="giveaway-play-btn">▶</div>
+            </div>
+            <div class="giveaway-badge">Giveaway</div>
+          </div>
+          <div class="giveaway-info">
+            <div class="giveaway-prize">AirPods Max Giveaway</div>
+            <div class="giveaway-desc">
+              Carter gives away AirPods Max to a lucky winner — see who got
+              them.
+            </div>
+            <div class="giveaway-watch">Watch on YouTube →</div>
+          </div>
+        </a>
+
+        <!-- 2 -->
+        <a
+          class="giveaway-card"
+          href="https://www.youtube.com/shorts/mV1Nx5Blwsw"
+          target="_blank"
+        >
+          <div class="giveaway-thumb">
+            <img
+              src="https://images.unsplash.com/photo-1591337676887-a217a6970a8a?q=80&w=800&auto=format&fit=crop"
+              alt="iPhone 17 Pro"
+            />
+            <div class="giveaway-play">
+              <div class="giveaway-play-btn">▶</div>
+            </div>
+            <div class="giveaway-badge">Giveaway</div>
+          </div>
+          <div class="giveaway-info">
+            <div class="giveaway-prize">Free iPhone 17 Pro</div>
+            <div class="giveaway-desc">
+              Carter gave someone a free iPhone 17 Pro… then his parents took
+              it.
+            </div>
+            <div class="giveaway-watch">Watch on YouTube →</div>
+          </div>
+        </a>
+
+        <!-- 3 -->
+        <a
+          class="giveaway-card"
+          href="https://www.youtube.com/shorts/uP3ld_WWGbo"
+          target="_blank"
+        >
+          <div class="giveaway-thumb">
+            <img
+              src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?q=80&w=800&auto=format&fit=crop"
+              alt="Custom PC"
+            />
+            <div class="giveaway-play">
+              <div class="giveaway-play-btn">▶</div>
+            </div>
+            <div class="giveaway-badge">YouTube Exclusive</div>
+          </div>
+          <div class="giveaway-info">
+            <div class="giveaway-prize">YouTube Exclusive PC</div>
+            <div class="giveaway-desc">
+              Update on Carter's YouTube-exclusive custom PC giveaway —
+              subscriber only.
+            </div>
+            <div class="giveaway-watch">Watch on YouTube →</div>
+          </div>
+        </a>
+
+        <!-- 4 -->
+        <a
+          class="giveaway-card"
+          href="https://www.youtube.com/shorts/4nFm305IFek"
+          target="_blank"
+        >
+          <div class="giveaway-thumb">
+            <img
+              src="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?q=80&w=800&auto=format&fit=crop"
+              alt="Samsung Galaxy Z Fold 7"
+            />
+            <div class="giveaway-play">
+              <div class="giveaway-play-btn">▶</div>
+            </div>
+            <div class="giveaway-badge">Giveaway</div>
+          </div>
+          <div class="giveaway-info">
+            <div class="giveaway-prize">Samsung Galaxy Z Fold 7</div>
+            <div class="giveaway-desc">
+              Congratulations to the winner of Carter's Galaxy Z Fold 7
+              giveaway!
+            </div>
+            <div class="giveaway-watch">Watch on YouTube →</div>
+          </div>
+        </a>
+
+        <!-- 5 -->
+        <a
+          class="giveaway-card"
+          href="https://www.tiktok.com/@carterpcs/video/7341857789758704938"
+          target="_blank"
+        >
+          <div class="giveaway-thumb">
+            <img
+              src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?q=80&w=800&auto=format&fit=crop"
+              alt="NZXT PC"
+            />
+            <div class="giveaway-play">
+              <div class="giveaway-play-btn">▶</div>
+            </div>
+            <div class="giveaway-badge">TikTok</div>
+          </div>
+          <div class="giveaway-info">
+            <div class="giveaway-prize">NZXT Player 2 Gaming PC</div>
+            <div class="giveaway-desc">
+              Tag someone who needs this — Carter gave away an NZXT Player 2
+              gaming PC.
+            </div>
+            <div class="giveaway-watch">Watch on TikTok →</div>
+          </div>
+        </a>
+
+        <!-- 6 -->
+        <a
+          class="giveaway-card"
+          href="https://www.tiktok.com/@carterpcs/video/7480402447698038046"
+          target="_blank"
+        >
+          <div class="giveaway-thumb">
+            <img
+              src="https://images.unsplash.com/photo-1547082299-de196ea013d6?q=80&w=800&auto=format&fit=crop"
+              alt="Custom Built PC"
+            />
+            <div class="giveaway-play">
+              <div class="giveaway-play-btn">▶</div>
+            </div>
+            <div class="giveaway-badge">TikTok</div>
+          </div>
+          <div class="giveaway-info">
+            <div class="giveaway-prize">Custom Built PC by PowerGPU</div>
+            <div class="giveaway-desc">
+              Carter gave away a custom PC built by PowerGPU — one of his
+              biggest giveaways.
+            </div>
+            <div class="giveaway-watch">Watch on TikTok →</div>
+          </div>
+        </a>
+
+        <!-- 7 -->
+        <a
+          class="giveaway-card"
+          href="https://www.tiktok.com/@carterpcs/video/7438070994931174699"
+          target="_blank"
+        >
+          <div class="giveaway-thumb">
+            <img
+              src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=800&auto=format&fit=crop"
+              alt="Tech Giveaway"
+            />
+            <div class="giveaway-play">
+              <div class="giveaway-play-btn">▶</div>
+            </div>
+            <div class="giveaway-badge">TikTok</div>
+          </div>
+          <div class="giveaway-info">
+            <div class="giveaway-prize">$1,000s of Tech</div>
+            <div class="giveaway-desc">
+              Carter gave away thousands of dollars worth of tech live — phones,
+              gear, and more.
+            </div>
+            <div class="giveaway-watch">Watch on TikTok →</div>
+          </div>
+        </a>
+
+        <!-- 8 -->
+        <a
+          class="giveaway-card"
+          href="https://www.youtube.com/@actuallycarterpcs"
+          target="_blank"
+        >
+          <div class="giveaway-thumb">
+            <img
+              src="https://images.unsplash.com/photo-1587831990711-23ca6441447b?q=80&w=800&auto=format&fit=crop"
+              alt="More Giveaways"
+            />
+            <div class="giveaway-play">
+              <div class="giveaway-play-btn">▶</div>
+            </div>
+            <div class="giveaway-badge">See All</div>
+          </div>
+          <div class="giveaway-info">
+            <div class="giveaway-prize">More Giveaways</div>
+            <div class="giveaway-desc">
+              Carter runs giveaways constantly. Check his full YouTube channel
+              for every drop.
+            </div>
+            <div class="giveaway-watch">See All on YouTube →</div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- BAD PC UPGRADES -->
+    <section class="main" style="padding-top: 0">
+      <div class="section-label">Fan Upgrades</div>
+      <div class="section-title">
+        People With Bad PCs<br />Carter Helped Out
+      </div>
+      <div
+        class="giveaway-grid"
+        style="grid-template-columns: repeat(auto-fill, minmax(260px, 1fr))"
+      >
+        <!-- 1 -->
+        <a
+          class="giveaway-card upgrade-card"
+          href="https://www.youtube.com/shorts/bROuFH0h4JA"
+          target="_blank"
+        >
+          <div class="giveaway-thumb">
+            <img
+              src="https://images.unsplash.com/photo-1555680202-c86f0e12f086?q=80&w=800&auto=format&fit=crop"
+              alt="Cardboard PC"
+            />
+            <div class="giveaway-play">
+              <div class="giveaway-play-btn">▶</div>
+            </div>
+            <div class="giveaway-badge upgrade-badge">PC Upgrade</div>
+          </div>
+          <div class="giveaway-info">
+            <div class="upgrade-before">
+              Started with: Cardboard box as a case
+            </div>
+            <div class="giveaway-prize">Cardboard PC Guy Gets a Real Case</div>
+            <div class="giveaway-desc">
+              Someone was literally running their PC inside a cardboard box.
+              Carter stepped in and gave him a proper case.
+            </div>
+            <div class="giveaway-watch">Watch on YouTube →</div>
+          </div>
+        </a>
+
+        <!-- 2 -->
+        <a
+          class="giveaway-card upgrade-card"
+          href="https://www.youtube.com/shorts/iqPOjxsbYYo"
+          target="_blank"
+        >
+          <div class="giveaway-thumb">
+            <img
+              src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=800&auto=format&fit=crop"
+              alt="Worst Laptop Setup"
+            />
+            <div class="giveaway-play">
+              <div class="giveaway-play-btn">▶</div>
+            </div>
+            <div class="giveaway-badge upgrade-badge">PC Upgrade</div>
+          </div>
+          <div class="giveaway-info">
+            <div class="upgrade-before">
+              Started with: The worst laptop setup ever
+            </div>
+            <div class="giveaway-prize">Worst Laptop Setup → Full Upgrade</div>
+            <div class="giveaway-desc">
+              This guy had the most painful laptop setup Carter had ever seen.
+              100k likes = he gets a full upgrade.
+            </div>
+            <div class="giveaway-watch">Watch on YouTube →</div>
+          </div>
+        </a>
+
+        <!-- 3 -->
+        <a
+          class="giveaway-card upgrade-card"
+          href="https://www.youtube.com/shorts/7uFz8PKo4rU"
+          target="_blank"
+        >
+          <div class="giveaway-thumb">
+            <img
+              src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop"
+              alt="Built from scraps"
+            />
+            <div class="giveaway-play">
+              <div class="giveaway-play-btn">▶</div>
+            </div>
+            <div class="giveaway-badge upgrade-badge">PC Upgrade</div>
+          </div>
+          <div class="giveaway-info">
+            <div class="upgrade-before">
+              Started with: Scrap parts after mom took his PC
+            </div>
+            <div class="giveaway-prize">
+              Mom Took His PC — He Built One From Scraps
+            </div>
+            <div class="giveaway-desc">
+              His mom confiscated his gaming PC, so he built a new one out of
+              whatever leftover parts he could find.
+            </div>
+            <div class="giveaway-watch">Watch on YouTube →</div>
+          </div>
+        </a>
+
+        <!-- 4 -->
+        <a
+          class="giveaway-card upgrade-card"
+          href="https://www.youtube.com/shorts/yO5fKx7RRAw"
+          target="_blank"
+        >
+          <div class="giveaway-thumb">
+            <img
+              src="https://images.unsplash.com/photo-1591488320449-011701bb6704?q=80&w=800&auto=format&fit=crop"
+              alt="GPU Upgrade"
+            />
+            <div class="giveaway-play">
+              <div class="giveaway-play-btn">▶</div>
+            </div>
+            <div class="giveaway-badge upgrade-badge">PC Upgrade</div>
+          </div>
+          <div class="giveaway-info">
+            <div class="upgrade-before">Started with: No dedicated GPU</div>
+            <div class="giveaway-prize">Front Desk Lady Gets a Free GPU</div>
+            <div class="giveaway-desc">
+              Carter gave his apartment's front desk lady a brand new GPU out of
+              nowhere — because why not.
+            </div>
+            <div class="giveaway-watch">Watch on YouTube →</div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ABOUT STRIP -->
+    <div class="about-strip">
+      <div class="about-text">
+        <p>
+          <strong>Carter Ryan Smith</strong> — aka CarterPCs — is a tech content
+          creator from California who posts PC builds, setup tours, and tech
+          reviews every single day.
+        </p>
+        <p>
+          Starting on TikTok in 2020, Carter grew to over
+          <strong>6 million followers</strong> and hit
+          <strong>1 million YouTube subscribers</strong> — making tech content
+          that actually doesn't put you to sleep.
+        </p>
+        <a
+          href="carter.html"
+          class="btn-primary"
+          style="display: inline-block; margin-top: 10px"
+          >About Carter →</a
+        >
+      </div>
+      <div class="about-divider"></div>
+      <div class="about-quote">
+        "Making tech less of a <span>snooze</span> fest 4x a day"
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-glow"></div>
+      <div class="footer-inner">
+        <div class="footer-top">
+          <!-- BRAND -->
+          <div class="footer-brand">
+            <a class="footer-logo" href="index.html">CarterPCs</a>
+            <p>
+              The unofficial fan hub for Carter PCs — PC builds, giveaways, and
+              the community behind the content.
+            </p>
+          </div>
+
+          <!-- NAVIGATE -->
+          <div class="footer-col">
+            <h4>Navigate</h4>
+            <a href="index.html">Home</a>
+            <a href="carter.html">About Carter</a>
+            <a href="community.html">Community</a>
+          </div>
+
+          <!-- CARTER'S SOCIALS -->
+          <div class="footer-col">
+            <h4>Carter's Socials</h4>
+            <a href="https://www.youtube.com/@actuallycarterpcs" target="_blank"
+              >▶ YouTube</a
+            >
+            <a href="https://www.tiktok.com/@carterpcs" target="_blank"
+              >♪ TikTok</a
+            >
+            <a href="https://www.instagram.com/carterpcs" target="_blank"
+              >◈ Instagram</a
+            >
+            <a href="https://twitter.com/carterpcs" target="_blank"
+              >✕ Twitter / X</a
+            >
+            <a href="https://carterpcs.store" target="_blank">🛒 Merch Store</a>
+          </div>
+
+          <!-- CONTACT / HELP -->
+          <div class="footer-contact-box">
+            <h4>Site Help & Admin</h4>
+            <p class="footer-contact-note">
+              Need help using the site, want admin access, or found a bug?<br />
+              <strong>Contact the site owner </strong>
+            </p>
+            <div class="footer-contact-links">
+              <a href="https://www.instagram.com/j0kh4a" target="_blank">
+                <span class="ci">◈</span> Instagram: @j0kh4a
+              </a>
+              <a href="mailto:zjokhadze96@gmail.com">
+                <span class="ci">✉</span> zjokhadze96@gmail.com
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="footer-copy">
+            Carter PCs Fan Website © 2026 — Not affiliated with Carter Ryan
+            Smith
+          </div>
+          <div class="footer-tagline">Making Tech Less Of A Snooze Fest</div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function toggleNav() {
+        const toggle = document.getElementById("navToggle");
+        const nav = document.getElementById("mobileNav");
+        toggle.classList.toggle("open");
+        nav.classList.toggle("open");
+      }
+    </script>
+  </body>
+</html>

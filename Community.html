@@ -1,0 +1,1626 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carter PCs | Community</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --red: #e8000d;
+        --red-dark: #a50009;
+        --red-glow: rgba(232, 0, 13, 0.35);
+        --bg: #0a0a0a;
+        --bg2: #111111;
+        --bg3: #181818;
+        --text: #f0f0f0;
+        --muted: #888;
+        --border: rgba(255, 255, 255, 0.07);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Barlow", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        overflow-x: hidden;
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 48px;
+        height: 68px;
+        background: rgba(10, 10, 10, 0.92);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .logo {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 28px;
+        letter-spacing: 2px;
+        color: var(--red);
+        text-decoration: none;
+      }
+
+      nav {
+        display: flex;
+        gap: 36px;
+      }
+
+      nav a {
+        font-weight: 600;
+        font-size: 13px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--muted);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      nav a:hover,
+      nav a.active {
+        color: #fff;
+      }
+
+      .page-header {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 48px;
+        padding-top: calc(68px + 64px);
+      }
+
+      .page-tag {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--red);
+        margin-bottom: 10px;
+      }
+
+      .page-title {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: clamp(48px, 7vw, 80px);
+        letter-spacing: 3px;
+        line-height: 1;
+        margin-bottom: 12px;
+      }
+
+      .page-sub {
+        font-size: 16px;
+        color: var(--muted);
+        margin-bottom: 52px;
+      }
+
+      .main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 48px 100px;
+        display: grid;
+        grid-template-columns: 380px 1fr;
+        gap: 40px;
+        align-items: start;
+      }
+
+      .form-panel {
+        position: sticky;
+        top: 88px;
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 32px;
+      }
+
+      .form-panel h2 {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 28px;
+        letter-spacing: 2px;
+        margin-bottom: 4px;
+      }
+
+      .form-panel > p {
+        font-size: 13px;
+        color: var(--muted);
+        margin-bottom: 28px;
+      }
+
+      .field-label {
+        display: block;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 8px;
+      }
+
+      .form-panel input[type="text"],
+      .form-panel textarea {
+        width: 100%;
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        border-radius: 3px;
+        color: #fff;
+        font-family: "Barlow", sans-serif;
+        font-size: 15px;
+        padding: 14px 16px;
+        transition: border-color 0.2s;
+        display: block;
+        margin-bottom: 20px;
+      }
+
+      .form-panel input[type="text"]:focus,
+      .form-panel textarea:focus {
+        outline: none;
+        border-color: var(--red);
+      }
+
+      .form-panel textarea {
+        height: 130px;
+        resize: none;
+      }
+
+      .file-label {
+        display: block;
+        background: var(--bg3);
+        border: 1px dashed rgba(255, 255, 255, 0.15);
+        border-radius: 3px;
+        padding: 20px;
+        text-align: center;
+        cursor: pointer;
+        transition: border-color 0.2s;
+        margin-bottom: 20px;
+      }
+
+      .file-label:hover {
+        border-color: var(--red);
+      }
+
+      .file-icon {
+        font-size: 24px;
+        margin-bottom: 6px;
+      }
+
+      .file-hint {
+        display: block;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .file-types {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.25);
+        margin-top: 4px;
+      }
+
+      .file-name {
+        font-size: 12px;
+        color: var(--red);
+        margin-top: 6px;
+        word-break: break-all;
+      }
+
+      input[type="file"] {
+        display: none;
+      }
+
+      .upload-progress {
+        display: none;
+        margin-bottom: 16px;
+      }
+      .upload-progress.active {
+        display: block;
+      }
+
+      .progress-track {
+        background: var(--bg3);
+        border-radius: 2px;
+        height: 4px;
+        overflow: hidden;
+        margin-bottom: 6px;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: var(--red);
+        width: 0%;
+        transition: width 0.4s;
+        border-radius: 2px;
+      }
+
+      .progress-label {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .btn-post {
+        width: 100%;
+        padding: 16px;
+        background: var(--red);
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        font-family: "Barlow", sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          box-shadow 0.2s,
+          opacity 0.2s;
+      }
+
+      .btn-post:hover:not(:disabled) {
+        background: var(--red-dark);
+        box-shadow: 0 0 24px var(--red-glow);
+      }
+
+      .btn-post:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+      }
+
+      /* FEED */
+      .posts-panel h2 {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 28px;
+        letter-spacing: 2px;
+        margin-bottom: 4px;
+      }
+
+      .posts-count {
+        font-size: 13px;
+        color: var(--muted);
+        margin-bottom: 28px;
+      }
+
+      .posts-count span {
+        color: var(--red);
+        font-weight: 700;
+      }
+
+      #postsContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      /* SKELETON */
+      .skeleton {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 28px;
+      }
+
+      .sk-row {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+        margin-bottom: 18px;
+      }
+      .sk-circle {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: var(--bg3);
+        animation: pulse 1.4s ease-in-out infinite;
+        flex-shrink: 0;
+      }
+
+      .sk-col {
+        flex: 1;
+      }
+
+      .sk-line {
+        background: var(--bg3);
+        border-radius: 2px;
+        height: 12px;
+        margin-bottom: 8px;
+        animation: pulse 1.4s ease-in-out infinite;
+      }
+
+      .sk-line.w30 {
+        width: 30%;
+      }
+      .sk-line.w50 {
+        width: 50%;
+      }
+      .sk-line.w70 {
+        width: 70%;
+      }
+      .sk-line.w100 {
+        width: 100%;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 0.35;
+        }
+        50% {
+          opacity: 0.7;
+        }
+      }
+
+      /* POST */
+      .post {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 28px;
+        animation: fadeUp 0.35s ease both;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .post::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 3px;
+        height: 100%;
+        background: var(--red);
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .post-header {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 14px;
+      }
+
+      .post-avatar {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: var(--red);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 18px;
+        color: #fff;
+        flex-shrink: 0;
+      }
+
+      .post-username {
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 18px;
+        font-weight: 800;
+      }
+
+      .post-time {
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .post-body {
+        font-size: 15px;
+        color: #ccc;
+        line-height: 1.7;
+        margin-bottom: 4px;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+
+      .post-media {
+        margin-top: 14px;
+      }
+
+      .media-badge {
+        display: inline-block;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 3px 9px;
+        border-radius: 2px;
+        margin-bottom: 8px;
+      }
+
+      .media-badge.image {
+        background: rgba(0, 120, 255, 0.18);
+        color: #5aadff;
+      }
+      .media-badge.video {
+        background: rgba(232, 0, 13, 0.18);
+        color: var(--red);
+      }
+
+      .post-media img {
+        width: 100%;
+        max-height: 500px;
+        object-fit: cover;
+        border-radius: 4px;
+        display: block;
+      }
+
+      .post-media video {
+        width: 100%;
+        max-height: 500px;
+        border-radius: 4px;
+        background: #000;
+        display: block;
+      }
+
+      /* EMPTY */
+      .empty-state {
+        border: 1px dashed rgba(255, 255, 255, 0.08);
+        border-radius: 4px;
+        padding: 60px;
+        text-align: center;
+      }
+
+      .empty-icon {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 48px;
+        color: rgba(255, 255, 255, 0.05);
+        letter-spacing: 4px;
+        margin-bottom: 14px;
+      }
+
+      .empty-state p {
+        font-size: 14px;
+        color: var(--muted);
+      }
+
+      /* ADMIN PANEL */
+      .admin-bar {
+        background: var(--bg2);
+        border-bottom: 1px solid var(--border);
+        padding: 0 48px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        height: 0;
+        overflow: hidden;
+        transition: height 0.3s;
+      }
+
+      .admin-bar.open {
+        height: 58px;
+        border-top: 1px solid rgba(232, 0, 13, 0.25);
+      }
+
+      .admin-badge {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        background: rgba(232, 0, 13, 0.15);
+        color: var(--red);
+        border: 1px solid rgba(232, 0, 13, 0.3);
+        padding: 4px 10px;
+        border-radius: 2px;
+      }
+
+      .admin-bar p {
+        font-size: 13px;
+        color: var(--muted);
+        flex: 1;
+      }
+
+      .btn-logout {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        background: none;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: var(--muted);
+        padding: 7px 16px;
+        border-radius: 3px;
+        cursor: pointer;
+        transition:
+          border-color 0.2s,
+          color 0.2s;
+      }
+      .btn-logout:hover {
+        border-color: #fff;
+        color: #fff;
+      }
+
+      /* ADMIN TOGGLE in form panel */
+      .admin-toggle {
+        margin-top: 16px;
+        padding-top: 16px;
+        border-top: 1px solid var(--border);
+      }
+
+      .admin-toggle summary {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--muted);
+        cursor: pointer;
+        user-select: none;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .admin-toggle summary::-webkit-details-marker {
+        display: none;
+      }
+      .admin-toggle summary::before {
+        content: "🔒";
+        font-size: 13px;
+      }
+      details[open] .admin-toggle summary::before {
+        content: "🔓";
+      }
+
+      .admin-input-wrap {
+        margin-top: 12px;
+        display: flex;
+        gap: 8px;
+      }
+
+      .admin-input-wrap input {
+        flex: 1;
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        border-radius: 3px;
+        color: #fff;
+        font-family: "Barlow", sans-serif;
+        font-size: 14px;
+        padding: 10px 14px;
+        transition: border-color 0.2s;
+      }
+
+      .admin-input-wrap input:focus {
+        outline: none;
+        border-color: var(--red);
+      }
+
+      .btn-admin-login {
+        padding: 10px 16px;
+        background: var(--red);
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        font-family: "Barlow", sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: background 0.2s;
+      }
+      .btn-admin-login:hover {
+        background: var(--red-dark);
+      }
+
+      .post-socials {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      .post-socials a {
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        color: var(--muted);
+        text-decoration: none;
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        padding: 4px 10px;
+        border-radius: 20px;
+        transition:
+          color 0.2s,
+          border-color 0.2s;
+      }
+
+      .post-socials a:hover {
+        color: #fff;
+        border-color: rgba(255, 255, 255, 0.25);
+      }
+
+      /* DELETE BUTTON on posts */
+      .btn-delete {
+        display: none;
+        margin-top: 14px;
+        padding: 8px 16px;
+        background: transparent;
+        border: 1px solid rgba(232, 0, 13, 0.35);
+        color: var(--red);
+        border-radius: 3px;
+        font-family: "Barlow", sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          border-color 0.2s;
+      }
+
+      .btn-delete:hover {
+        background: rgba(232, 0, 13, 0.12);
+        border-color: var(--red);
+      }
+
+      body.admin-mode .btn-delete {
+        display: inline-block;
+      }
+
+      /* TOAST */
+      .toast {
+        position: fixed;
+        bottom: 28px;
+        right: 28px;
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-left: 3px solid var(--red);
+        border-radius: 4px;
+        padding: 14px 20px;
+        font-size: 14px;
+        color: #fff;
+        z-index: 999;
+        opacity: 0;
+        transform: translateY(12px);
+        transition: all 0.3s;
+        max-width: 300px;
+        pointer-events: none;
+      }
+
+      .toast.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .toast.success {
+        border-left-color: #00c851;
+      }
+
+      footer {
+        background: var(--bg2);
+        border-top: 1px solid var(--border);
+        position: relative;
+        overflow: hidden;
+      }
+      .footer-glow {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 700px;
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          var(--red),
+          transparent
+        );
+      }
+      .footer-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 64px 48px 40px;
+      }
+      .footer-top {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr 1.6fr;
+        gap: 48px;
+        padding-bottom: 48px;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 32px;
+      }
+      .footer-brand .footer-logo {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 34px;
+        letter-spacing: 3px;
+        color: var(--red);
+        display: block;
+        margin-bottom: 12px;
+        text-decoration: none;
+      }
+      .footer-brand p {
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.8;
+        max-width: 210px;
+      }
+      .footer-col h4 {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 17px;
+        letter-spacing: 2px;
+        color: #fff;
+        margin-bottom: 18px;
+      }
+      .footer-col a {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--muted);
+        text-decoration: none;
+        margin-bottom: 11px;
+        transition:
+          color 0.2s,
+          padding-left 0.2s;
+      }
+      .footer-col a:hover {
+        color: #fff;
+        padding-left: 6px;
+      }
+      .footer-contact-box {
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 24px;
+        position: relative;
+        overflow: hidden;
+      }
+      .footer-contact-box::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 3px;
+        height: 100%;
+        background: var(--red);
+      }
+      .footer-contact-box h4 {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 17px;
+        letter-spacing: 2px;
+        color: #fff;
+        margin-bottom: 8px;
+      }
+      .footer-contact-note {
+        font-size: 12px;
+        color: var(--muted);
+        line-height: 1.7;
+        margin-bottom: 16px;
+      }
+      .footer-contact-note strong {
+        color: #bbb;
+      }
+      .footer-contact-links {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .footer-contact-links a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--muted);
+        text-decoration: none;
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 3px;
+        padding: 10px 14px;
+        transition:
+          border-color 0.2s,
+          color 0.2s,
+          background 0.2s;
+      }
+      .footer-contact-links a:hover {
+        border-color: rgba(232, 0, 13, 0.4);
+        color: #fff;
+        background: rgba(232, 0, 13, 0.05);
+      }
+      .footer-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .footer-copy {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.18);
+        letter-spacing: 1px;
+      }
+      .footer-tagline {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 13px;
+        letter-spacing: 3px;
+        color: rgba(255, 255, 255, 0.08);
+      }
+
+      /* ── HAMBURGER ── */
+      .nav-toggle {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        padding: 4px;
+        background: none;
+        border: none;
+      }
+
+      .nav-toggle span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: #fff;
+        border-radius: 2px;
+        transition:
+          transform 0.3s,
+          opacity 0.3s;
+      }
+
+      .nav-toggle.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .nav-toggle.open span:nth-child(2) {
+        opacity: 0;
+      }
+      .nav-toggle.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      .mobile-nav {
+        display: none;
+        position: fixed;
+        top: 68px;
+        left: 0;
+        right: 0;
+        background: rgba(10, 10, 10, 0.98);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--border);
+        z-index: 99;
+        flex-direction: column;
+        padding: 20px 24px;
+        gap: 4px;
+      }
+
+      .mobile-nav.open {
+        display: flex;
+      }
+
+      .mobile-nav a {
+        font-weight: 700;
+        font-size: 15px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--muted);
+        text-decoration: none;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--border);
+        transition: color 0.2s;
+      }
+
+      .mobile-nav a:last-child {
+        border-bottom: none;
+      }
+      .mobile-nav a:hover,
+      .mobile-nav a.active {
+        color: #fff;
+      }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 900px) {
+        .main {
+          grid-template-columns: 1fr;
+        }
+        .form-panel {
+          position: static;
+        }
+      }
+
+      @media (max-width: 768px) {
+        header {
+          padding: 0 20px;
+        }
+        nav {
+          display: none;
+        }
+        .nav-toggle {
+          display: flex;
+        }
+
+        .admin-bar {
+          padding: 0 20px;
+          flex-wrap: wrap;
+          height: auto;
+          padding-top: 12px;
+          padding-bottom: 12px;
+        }
+        .admin-bar.open {
+          height: auto;
+        }
+
+        .page-header {
+          padding: 0 20px;
+          padding-top: calc(68px + 40px);
+        }
+        .page-title {
+          font-size: 52px;
+        }
+
+        .main {
+          padding: 0 20px 80px;
+        }
+
+        .post-socials {
+          gap: 6px;
+        }
+
+        .footer-inner {
+          padding: 48px 20px 32px;
+        }
+        .footer-top {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+        .footer-bottom {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .page-title {
+          font-size: 42px;
+        }
+        .form-panel {
+          padding: 24px 20px;
+        }
+        .post {
+          padding: 20px 16px;
+        }
+        .toast {
+          left: 16px;
+          right: 16px;
+          bottom: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a class="logo" href="index.html">CarterPCs</a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="carter.html">About</a>
+        <a href="community.html" class="active">Community</a>
+      </nav>
+      <button
+        class="nav-toggle"
+        id="navToggle"
+        onclick="toggleNav()"
+        aria-label="Menu"
+      >
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <div class="mobile-nav" id="mobileNav">
+      <a href="index.html">Home</a>
+      <a href="carter.html">About</a>
+      <a href="community.html" class="active">Community</a>
+    </div>
+
+    <!-- ADMIN BAR (shown when logged in) -->
+    <div class="admin-bar" id="adminBar">
+      <span class="admin-badge">Admin Mode</span>
+      <p>Delete buttons are now visible on all posts.</p>
+      <button class="btn-logout" onclick="adminLogout()">Lock & Exit</button>
+    </div>
+
+    <div class="page-header">
+      <div class="page-tag">Fan Hub</div>
+      <div class="page-title">Community</div>
+      <div class="page-sub">
+        Share your setup, build, photo or video — all posts are saved
+        permanently.Maybe you will even get featured in Carter's video fro
+        creativity and win free pc.
+      </div>
+    </div>
+
+    <div class="main">
+      <!-- FORM -->
+      <div class="form-panel">
+        <h2>New Post</h2>
+        <p>Drop your setup, build, or anything Carter PCs.</p>
+
+        <label class="field-label" for="username">Your Name</label>
+        <input type="text" id="username" placeholder="e.g. Carter Fan 🔥" />
+
+        <label class="field-label" for="userEmail"
+          >Email
+          <span
+            style="
+              color: var(--muted);
+              font-weight: 400;
+              text-transform: none;
+              letter-spacing: 0;
+            "
+            >(optional)</span
+          ></label
+        >
+        <input type="text" id="userEmail" placeholder="you@gmail.com" />
+
+        <label class="field-label" for="userInstagram"
+          >Instagram
+          <span
+            style="
+              color: var(--muted);
+              font-weight: 400;
+              text-transform: none;
+              letter-spacing: 0;
+            "
+            >(optional)</span
+          ></label
+        >
+        <input type="text" id="userInstagram" placeholder="@yourhandle" />
+
+        <label class="field-label" for="userTiktok"
+          >TikTok
+          <span
+            style="
+              color: var(--muted);
+              font-weight: 400;
+              text-transform: none;
+              letter-spacing: 0;
+            "
+            >(optional)</span
+          ></label
+        >
+        <input type="text" id="userTiktok" placeholder="@yourhandle" />
+
+        <label class="field-label" for="message">Message</label>
+        <textarea
+          id="message"
+          placeholder="Share a build, setup, or anything Carter PCs related..."
+        ></textarea>
+
+        <label class="field-label">Photo or Video (optional)</label>
+        <label class="file-label" for="mediaUpload">
+          <div class="file-icon">📎</div>
+          <span class="file-hint">Click to upload</span>
+          <span class="file-types">Images & Videos supported</span>
+          <div class="file-name" id="fileName">No file chosen</div>
+        </label>
+        <input
+          type="file"
+          id="mediaUpload"
+          accept="image/*,video/*"
+          onchange="onFileChange(this)"
+        />
+
+        <div class="upload-progress" id="uploadProgress">
+          <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <div class="progress-label" id="progressLabel">Uploading...</div>
+        </div>
+
+        <button class="btn-post" id="postBtn" onclick="createPost()">
+          Post to Community
+        </button>
+
+        <!-- ADMIN LOGIN -->
+        <details class="admin-toggle" id="adminDetails">
+          <summary>Admin Access</summary>
+          <div class="admin-input-wrap">
+            <input
+              type="password"
+              id="adminPass"
+              placeholder="Enter password"
+              onkeydown="if (event.key === 'Enter') adminLogin();"
+            />
+            <button class="btn-admin-login" onclick="adminLogin()">
+              Unlock
+            </button>
+          </div>
+        </details>
+      </div>
+
+      <!-- FEED -->
+      <div class="posts-panel">
+        <h2>Community Feed</h2>
+        <div class="posts-count">
+          Showing <span id="postCount">—</span> posts
+        </div>
+        <div id="postsContainer">
+          <div class="skeleton">
+            <div class="sk-row">
+              <div class="sk-circle"></div>
+              <div class="sk-col">
+                <div class="sk-line w30"></div>
+                <div class="sk-line w50" style="height: 9px"></div>
+              </div>
+            </div>
+            <div class="sk-line w100"></div>
+            <div class="sk-line w70"></div>
+          </div>
+          <div class="skeleton">
+            <div class="sk-row">
+              <div class="sk-circle"></div>
+              <div class="sk-col">
+                <div class="sk-line w30"></div>
+                <div class="sk-line w50" style="height: 9px"></div>
+              </div>
+            </div>
+            <div class="sk-line w100"></div>
+            <div class="sk-line w70"></div>
+            <div class="sk-line w50"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <footer>
+      <div class="footer-glow"></div>
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a class="footer-logo" href="index.html">CarterPCs</a>
+            <p>
+              The unofficial fan hub for Carter PCs — PC builds, giveaways, and
+              the community behind the content.
+            </p>
+          </div>
+          <div class="footer-col">
+            <h4>Navigate</h4>
+            <a href="index.html">Home</a>
+            <a href="carter.html">About Carter</a>
+            <a href="community.html">Community</a>
+          </div>
+          <div class="footer-col">
+            <h4>Carter's Socials</h4>
+            <a href="https://www.youtube.com/@actuallycarterpcs" target="_blank"
+              >▶ YouTube</a
+            >
+            <a href="https://www.tiktok.com/@carterpcs" target="_blank"
+              >♪ TikTok</a
+            >
+            <a href="https://www.instagram.com/carterpcs" target="_blank"
+              >◈ Instagram</a
+            >
+            <a href="https://twitter.com/carterpcs" target="_blank"
+              >✕ Twitter / X</a
+            >
+            <a href="https://carterpcs.store" target="_blank">🛒 Merch Store</a>
+          </div>
+          <div class="footer-contact-box">
+            <h4>Site Help & Admin</h4>
+            <p class="footer-contact-note">
+              Need help using the site, want admin access, or found a bug?<br /><strong
+                >Contact the site owner</strong
+              >
+            </p>
+            <div class="footer-contact-links">
+              <a href="https://www.instagram.com/j0kh4a" target="_blank"
+                ><span>◈</span> Instagram: @j0kh4a</a
+              >
+              <a href="mailto:zjokhadze96@gmail.com"
+                ><span>✉</span> zjokhadze96@gmail.com</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="footer-copy">
+            Carter PCs Fan Website © 2026 — Not affiliated with Carter Ryan
+            Smith
+          </div>
+          <div class="footer-tagline">Making Tech Less Of A Snooze Fest</div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function toggleNav() {
+        document.getElementById("navToggle").classList.toggle("open");
+        document.getElementById("mobileNav").classList.toggle("open");
+      }
+
+      const MOCKAPI_URL = "https://69ff4dba2b7ab349602f7c77.mockapi.io/posts";
+      const CLOUD_NAME = "duujdje19";
+      const UPLOAD_PRESET = "carterpcs_upload";
+
+      let totalPosts = 0;
+
+      /* ── HELPERS ─────────────────────────────── */
+      function onFileChange(input) {
+        document.getElementById("fileName").textContent = input.files.length
+          ? input.files[0].name
+          : "No file chosen";
+      }
+
+      function initial(name) {
+        return (name || "?").trim().charAt(0).toUpperCase();
+      }
+
+      function formatDate(str) {
+        const d = new Date(str);
+        if (isNaN(d)) return "";
+        return (
+          d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) +
+          " · " +
+          d.toLocaleDateString([], {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+          })
+        );
+      }
+
+      function toast(msg, type) {
+        const el = document.getElementById("toast");
+        el.textContent = msg;
+        el.className = "toast show" + (type === "success" ? " success" : "");
+        setTimeout(() => (el.className = "toast"), 3600);
+      }
+
+      function setProgress(pct, label) {
+        document.getElementById("progressFill").style.width = pct + "%";
+        document.getElementById("progressLabel").textContent = label;
+      }
+
+      /* ── BUILD POST ELEMENT ──────────────────── */
+      function buildPost(post) {
+        const el = document.createElement("div");
+        el.className = "post";
+
+        let media = "";
+        if (post.mediaUrl && post.mediaType) {
+          if (post.mediaType === "image") {
+            media = `<div class="post-media">
+          <span class="media-badge image">📷 Image</span>
+          <img src="${post.mediaUrl}" alt="post image" loading="lazy" />
+        </div>`;
+          } else if (post.mediaType === "video") {
+            media = `<div class="post-media">
+          <span class="media-badge video">🎥 Video</span>
+          <video controls preload="metadata">
+            <source src="${post.mediaUrl}" />
+          </video>
+        </div>`;
+          }
+        }
+
+        let socials = "";
+        const links = [];
+        if (post.userEmail)
+          links.push(
+            `<a href="mailto:${post.userEmail}" title="Email">✉ ${post.userEmail}</a>`,
+          );
+        if (post.userInstagram)
+          links.push(
+            `<a href="https://instagram.com/${post.userInstagram.replace("@", "")}" target="_blank" title="Instagram">◈ ${post.userInstagram.startsWith("@") ? post.userInstagram : "@" + post.userInstagram}</a>`,
+          );
+        if (post.userTiktok)
+          links.push(
+            `<a href="https://tiktok.com/@${post.userTiktok.replace("@", "")}" target="_blank" title="TikTok">♪ ${post.userTiktok.startsWith("@") ? post.userTiktok : "@" + post.userTiktok}</a>`,
+          );
+        if (links.length)
+          socials = `<div class="post-socials">${links.join("")}</div>`;
+
+        el.innerHTML = `
+      <div class="post-header">
+        <div class="post-avatar">${initial(post.username)}</div>
+        <div>
+          <div class="post-username">${post.username || "Anonymous Fan"}</div>
+          <div class="post-time">${formatDate(post.createdAt)}</div>
+        </div>
+      </div>
+      ${socials}
+      ${post.message ? `<div class="post-body">${post.message}</div>` : ""}
+      ${media}
+      <button class="btn-delete" onclick="deletePost('${post.id}', this)">🗑 Delete Post</button>
+    `;
+        return el;
+      }
+
+      /* ── LOAD POSTS ──────────────────────────── */
+      async function loadPosts() {
+        try {
+          const res = await fetch(MOCKAPI_URL + "?sortBy=createdAt&order=desc");
+          if (!res.ok) throw new Error();
+          const posts = await res.json();
+
+          const container = document.getElementById("postsContainer");
+          container.innerHTML = "";
+
+          if (!posts.length) {
+            container.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-icon">CARTERPCS</div>
+            <p>No posts yet. Be the first to drop something.</p>
+          </div>`;
+          } else {
+            posts.forEach((p) => container.appendChild(buildPost(p)));
+          }
+
+          totalPosts = posts.length;
+          document.getElementById("postCount").textContent = totalPosts;
+        } catch {
+          document.getElementById("postsContainer").innerHTML = `
+        <div class="empty-state">
+          <div class="empty-icon">!</div>
+          <p>Could not load posts. Check your connection and refresh.</p>
+        </div>`;
+          document.getElementById("postCount").textContent = "0";
+        }
+      }
+
+      /* ── CLOUDINARY UPLOAD ───────────────────── */
+      async function uploadFile(file) {
+        const isVideo = file.type.startsWith("video/");
+        const fd = new FormData();
+        fd.append("file", file);
+        fd.append("upload_preset", UPLOAD_PRESET);
+
+        const res = await fetch(
+          `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/${isVideo ? "video" : "image"}/upload`,
+          { method: "POST", body: fd },
+        );
+
+        if (!res.ok) throw new Error("Upload failed");
+        const data = await res.json();
+        return { url: data.secure_url, type: isVideo ? "video" : "image" };
+      }
+
+      /* ── CREATE POST ─────────────────────────── */
+      const POST_COOLDOWN_MS = 30 * 24 * 60 * 60 * 1000; // 30 days
+      const LAST_POST_KEY = "carterpcs_last_post";
+
+      function getPostCooldownStatus() {
+        const last = localStorage.getItem(LAST_POST_KEY);
+        if (!last) return { canPost: true };
+        const diff = Date.now() - parseInt(last, 10);
+        if (diff >= POST_COOLDOWN_MS) return { canPost: true };
+        const msLeft = POST_COOLDOWN_MS - diff;
+        const daysLeft = Math.ceil(msLeft / (1000 * 60 * 60 * 24));
+        return { canPost: false, daysLeft };
+      }
+
+      function updatePostBtnState() {
+        const btn = document.getElementById("postBtn");
+        const status = getPostCooldownStatus();
+        if (!status.canPost) {
+          btn.disabled = true;
+          btn.textContent = `Come back in ${status.daysLeft} day${status.daysLeft !== 1 ? "s" : ""}`;
+        } else {
+          btn.disabled = false;
+          btn.textContent = "Post to Community";
+        }
+      }
+
+      async function createPost() {
+        const username = document.getElementById("username").value.trim();
+        const message = document.getElementById("message").value.trim();
+        const userEmail = document.getElementById("userEmail").value.trim();
+        const userInstagram = document
+          .getElementById("userInstagram")
+          .value.trim();
+        const userTiktok = document.getElementById("userTiktok").value.trim();
+        const fileInput = document.getElementById("mediaUpload");
+        const file = fileInput.files[0] || null;
+        const btn = document.getElementById("postBtn");
+
+        if (!username && !message && !file) {
+          toast("Add a name, message, or file first.");
+          return;
+        }
+
+        // Check cooldown
+        const status = getPostCooldownStatus();
+        if (!status.canPost) {
+          toast(
+            `You already posted this month. Come back in ${status.daysLeft} day${status.daysLeft !== 1 ? "s" : ""}.`,
+          );
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = "Posting...";
+
+        let mediaUrl = "",
+          mediaType = "";
+
+        // Upload file if present
+        if (file) {
+          document.getElementById("uploadProgress").classList.add("active");
+          setProgress(15, "Uploading media...");
+          try {
+            const result = await uploadFile(file);
+            mediaUrl = result.url;
+            mediaType = result.type;
+            setProgress(75, "Saving post...");
+          } catch {
+            toast("File upload failed. Try a smaller file.");
+            btn.disabled = false;
+            btn.textContent = "Post to Community";
+            document
+              .getElementById("uploadProgress")
+              .classList.remove("active");
+            return;
+          }
+        }
+
+        // Save to MockAPI
+        try {
+          const res = await fetch(MOCKAPI_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              username,
+              message,
+              mediaUrl,
+              mediaType,
+              userEmail,
+              userInstagram,
+              userTiktok,
+            }),
+          });
+
+          if (!res.ok) throw new Error();
+          const newPost = await res.json();
+
+          setProgress(100, "Done!");
+
+          const container = document.getElementById("postsContainer");
+          container.querySelector(".empty-state")?.remove();
+          container.prepend(buildPost(newPost));
+
+          totalPosts++;
+          document.getElementById("postCount").textContent = totalPosts;
+
+          // Reset
+          document.getElementById("username").value = "";
+          document.getElementById("message").value = "";
+          document.getElementById("userEmail").value = "";
+          document.getElementById("userInstagram").value = "";
+          document.getElementById("userTiktok").value = "";
+          fileInput.value = "";
+          document.getElementById("fileName").textContent = "No file chosen";
+
+          setTimeout(() => {
+            document
+              .getElementById("uploadProgress")
+              .classList.remove("active");
+            setProgress(0, "");
+          }, 800);
+
+          toast("Post shared!", "success");
+
+          // Save timestamp + post ID to enforce 1 post per month
+          localStorage.setItem(LAST_POST_KEY, Date.now().toString());
+          localStorage.setItem("carterpcs_last_post_id", newPost.id);
+          updatePostBtnState();
+        } catch {
+          toast("Failed to save post. Please try again.");
+        }
+
+        btn.disabled = false;
+        btn.textContent = "Post to Community";
+      }
+
+      const ADMIN_PASSWORD = "carter@1234?";
+      let isAdmin = false;
+
+      function adminLogin() {
+        const pass = document.getElementById("adminPass").value;
+        if (pass === ADMIN_PASSWORD) {
+          isAdmin = true;
+          document.body.classList.add("admin-mode");
+          document.getElementById("adminBar").classList.add("open");
+          document.getElementById("adminDetails").removeAttribute("open");
+          document.getElementById("adminPass").value = "";
+          toast(
+            "Admin mode unlocked. Delete buttons are now visible.",
+            "success",
+          );
+        } else {
+          toast("Wrong password. Try again.");
+          document.getElementById("adminPass").value = "";
+        }
+      }
+
+      function adminLogout() {
+        isAdmin = false;
+        document.body.classList.remove("admin-mode");
+        document.getElementById("adminBar").classList.remove("open");
+        toast("Admin mode locked.", "success");
+      }
+
+      async function deletePost(id, btn) {
+        if (!isAdmin) return;
+        if (!confirm("Delete this post? This cannot be undone.")) return;
+
+        btn.disabled = true;
+        btn.textContent = "Deleting...";
+
+        try {
+          const res = await fetch(`${MOCKAPI_URL}/${id}`, { method: "DELETE" });
+          if (!res.ok) throw new Error();
+
+          const postEl = btn.closest(".post");
+          postEl.style.transition = "opacity 0.3s, transform 0.3s";
+          postEl.style.opacity = "0";
+          postEl.style.transform = "translateX(-10px)";
+          setTimeout(() => {
+            postEl.remove();
+            totalPosts = Math.max(0, totalPosts - 1);
+            document.getElementById("postCount").textContent = totalPosts;
+            if (totalPosts === 0) {
+              document.getElementById("postsContainer").innerHTML = `
+            <div class="empty-state">
+              <div class="empty-icon">CARTERPCS</div>
+              <p>No posts yet. Be the first to drop something.</p>
+            </div>`;
+            }
+          }, 300);
+
+          // If the deleted post was this user's post, clear their cooldown
+          const myPostId = localStorage.getItem("carterpcs_last_post_id");
+          if (myPostId && myPostId === String(id)) {
+            localStorage.removeItem(LAST_POST_KEY);
+            localStorage.removeItem("carterpcs_last_post_id");
+            updatePostBtnState();
+            toast("Post deleted — that user can now post again.", "success");
+          } else {
+            toast("Post deleted.", "success");
+          }
+        } catch {
+          toast("Failed to delete post. Try again.");
+          btn.disabled = false;
+          btn.textContent = "🗑 Delete Post";
+        }
+      }
+
+      loadPosts();
+      updatePostBtnState();
+    </script>
+  </body>
+</html>
